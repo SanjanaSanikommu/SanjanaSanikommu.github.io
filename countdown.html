@@ -1,0 +1,148 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>Revisit</title>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+li {
+  display: inline-block;
+  font-size: 1.5em;
+  list-style-type: none;
+  padding: 1em;
+  text-transform: uppercase;
+}
+
+li span {
+  display: block;
+  font-size: 4.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* general styling */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #ffd54f;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: -apple-system, 
+    BlinkMacSystemFont, 
+    "Segoe UI", 
+    Roboto, 
+    Oxygen-Sans, 
+    Ubuntu, 
+    Cantarell, 
+    "Helvetica Neue", 
+    sans-serif;
+}
+
+
+.container {
+  color: #333;
+  margin: 0 auto;
+  padding: 0.5rem;
+  text-align: center;
+}
+.back-link {
+  color: rgba(255, 255, 255, 0.6);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+}
+.back-link:hover, .back-link:focus {
+  border-color: #fff;
+  color: #fff;
+}
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+
+
+<body translate="no">
+<div class="container">
+<h1>Countdown starts Malanki</h1>
+
+<ul>
+<li><span id="days"></span>days</li>
+<li><span id="hours"></span>Hours</li>
+<li><span id="minutes"></span>Minutes</li>
+<li><span id="seconds"></span>Seconds</li>
+</ul>
+<h2>We are too busy!!</h2>
+<h3> ----Can we meet over a Webex Video call?----</h3>
+<img src="wink.gif">
+</div>
+
+
+
+
+
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+<script id="rendered-js">
+const second = 1000,
+minute = second * 60,
+hour = minute * 60,
+day = hour * 24;
+
+let countDown = new Date('June 7, 2020 00:00:00').getTime(),
+x = setInterval(function () {
+
+  let now = new Date().getTime(),
+  distance = countDown - now;
+
+  document.getElementById('days').innerText = Math.floor(distance / day),
+  document.getElementById('hours').innerText = Math.floor(distance % day / hour),
+  document.getElementById('minutes').innerText = Math.floor(distance % hour / minute),
+  document.getElementById('seconds').innerText = Math.floor(distance % minute / second);
+
+  //do something later when date is reached
+  //if (distance < 0) {
+  //  clearInterval(x);
+  //  'IT'S MY BIRTHDAY!;
+  //}
+
+}, second);
+//# sourceURL=pen.js
+    </script>
+</body>
+</html>

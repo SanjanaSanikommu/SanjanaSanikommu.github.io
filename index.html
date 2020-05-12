@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>It's for you</title>
+<style>
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body{
+    background-image: url('https://3kllhk1ibq34qk6sp3bhtox1-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/screen-shot-2017-11-16-at-3.50.20-pm-1.png');
+    background-size: cover;
+    
+    
+    
+    height: 100;
+    padding:0;
+    margin:0;
+}
+
+
+a {
+  outline: none;
+  text-decoration: none;
+  color: #fff;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.back-link {
+  color: rgba(255, 255, 255, 0.6);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+}
+.back-link:hover, .back-link:focus {
+  border-color: #fff;
+  color: #fff;
+}
+
+.article__pointer {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  margin: -50px 0 0 -50px;
+  display: -webkit-box;
+  display: flex;
+  border-radius: 100%;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.article__pointer_blue {
+  
+  left: 30%;
+  bottom: 8%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.5))), url("https://iconbug.com/download/size/128/icon/6329/small-home/");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url("https://iconbug.com/download/size/128/icon/6329/small-home/");
+  box-shadow: 0 0 0 10px #2980b9;
+  background-size: 100px 100px;
+}
+.article__pointer_blue:hover, .article__pointer_blue:focus {
+  box-shadow: 0 0 0 20px #2980b9;
+}
+.article__pointer_red {
+  bottom:8%;
+  left: 70%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.5))), url("https://cdn1.iconfinder.com/data/icons/celebration-flat/64/open-box-surprise-boxing-day-gift-512.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url("https://cdn1.iconfinder.com/data/icons/celebration-flat/64/open-box-surprise-boxing-day-gift-512.png");
+  box-shadow: 0 0 0 10px #e74c3c;
+   background-size: 100px 100px;
+}
+.article__pointer_red:hover, .article__pointer_red:focus {
+  box-shadow: 0 0 0 20px #e74c3c;
+}
+.article__pointer_yellow {
+  bottom:8%;
+  left: 50%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.5))), url("https://www.online-stopwatch.com/images/eggtimer.gif?size=50px");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url("https://www.online-stopwatch.com/images/eggtimer.gif?size=120px");
+   background-size: 100px 100px;
+
+  box-shadow: 0 0 0 10px #e67e22;
+}
+.article__pointer_yellow:hover, .article__pointer_yellow:focus {
+  box-shadow: 0 0 0 20px #e67e22;
+}
+.article__layer {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  will-change: transform;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: .6s ease-in-out;
+  transition: .6s ease-in-out;
+}
+.article__layer_blue {
+  background: #2980b9;
+  box-shadow: 0 0 0 100vw #2980b9, 0 0 0 100vh #2980b9;
+}
+.article__layer_red {
+  background: #e74c3c;
+  box-shadow: 0 0 0 100vw #e74c3c, 0 0 0 100vh #e74c3c;
+}
+.article__layer_yellow {
+  background: #e67e22;
+  box-shadow: 0 0 0 100vw #e67e22, 0 0 0 100vh #e67e22;
+}
+.article__panel {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  will-change: opacity, transform;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+.article__panel:target {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: .2s .4s;
+  transition: .2s .4s;
+}
+.article__panel:target ~ a {
+  z-index: 1;
+}
+.article__panel:target ~ a span {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.article__panel_blue {
+  background: #2980b9;
+}
+.article__panel_red {
+  background: #e74c3c;
+}
+.article__panel_yellow {
+  background: #e67e22;
+}
+.article__body {
+  max-height: 100%;
+  width: 100%;
+  -webkit-box-flex: 0;
+          flex: 0 0 100%;
+  padding: 40px 20px;
+  line-height: 1.6;
+  letter-spacing: .025em;
+  color: rgba(255, 255, 255, 0.75);
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.article__container {
+  max-width: 600px;
+  margin: auto;
+}
+.article__header {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+          align-items: center;
+  margin-bottom: 40px;
+}
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<section class="article">
+<article class="article__panel article__panel_blue" id="article-blue">
+<div class="article__body">
+<div class="article__container">
+<header class="article__header">
+
+<a role="button" href="#0" class="back-link">close</a>
+</header>
+<h1> ARE WE INVITED TO MALANKI MANSION??? </h1>
+<img src="think.gif">
+</div>
+</div>
+</article>
+<a role="button" class="article__pointer article__pointer_blue" href="#article-blue">
+<span class="article__layer article__layer_blue" role="presentation"></span>
+Home
+</a>
+
+
+</section>
+<section class="article">
+<article class="article__panel article__panel_red" id="article-red">
+<div class="article__body">
+<div class="article__container">
+<header class="article__header">
+<h2>SUPRISE</h2>
+<a role="button" href="#0" class="back-link">close</a>
+</header>
+<h1>REVISIT OUR WEBSITE ON JUNE 7th</h1>
+<h5> From Pari_Chopra, Sankeerth_thagini, Sanjana_Sanikommu </h5> 
+ <img src="suprise.gif">
+</div>
+</div>
+</article> 
+<a role="button" class="article__pointer article__pointer_red" href="#article-red">
+<span class="article__layer article__layer_red" role="presentation"></span>
+Suprise
+</a>
+</section>
+
+<section class="article">
+
+<a role="button" class="article__pointer article__pointer_yellow" href="countdown.html">
+<span class="article__layer article__layer_yellow" role="presentation"></span>
+CLOCK
+</a>
+</section>
+
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+</body>
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
