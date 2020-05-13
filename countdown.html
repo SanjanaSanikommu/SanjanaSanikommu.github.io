@@ -4,12 +4,207 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 <link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
 <meta name="apple-mobile-web-app-title" content="CodePen">
 <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
 <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
 <title>Revisit</title>
 <style>
+
+
+
+
+
+
+
+
+
+a {
+  outline: none;
+  text-decoration: none;
+  color: #fff;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.back-link {
+  color: rgba(255, 255, 255, 0.6);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+}
+.back-link:hover, .back-link:focus {
+  border-color: #fff;
+  color: #fff;
+}
+
+.article__pointer {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  margin: -50px 0 0 -50px;
+  display: -webkit-box;
+  display: flex;
+  border-radius: 100%;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.article__pointer_blue {
+  
+  left: 40%;
+  bottom: 15%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.5))), url("https://iconbug.com/download/size/128/icon/6329/small-home/");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url("https://iconbug.com/download/size/128/icon/6329/small-home/");
+  box-shadow: 0 0 0 10px #2980b9;
+  background-size: 100px 100px;
+}
+.article__pointer_blue:hover, .article__pointer_blue:focus {
+  box-shadow: 0 0 0 20px #2980b9;
+}
+.article__pointer_red {
+  bottom:23%;
+  left: 50%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.5))), url("https://cdn1.iconfinder.com/data/icons/celebration-flat/64/open-box-surprise-boxing-day-gift-512.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url("https://cdn1.iconfinder.com/data/icons/celebration-flat/64/open-box-surprise-boxing-day-gift-512.png");
+  box-shadow: 0 0 0 10px #e74c3c;
+   background-size: 100px 100px;
+}
+.article__pointer_red:hover, .article__pointer_red:focus {
+  box-shadow: 0 0 0 20px #e74c3c;
+}
+.article__pointer_yellow {
+  bottom:20%;
+  left: 50%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.5))), url("https://www.online-stopwatch.com/images/eggtimer.gif?size=50px");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url("https://www.online-stopwatch.com/images/eggtimer.gif?size=120px");
+   background-size: 100px 100px;
+
+  box-shadow: 0 0 0 10px #e67e22;
+}
+.article__pointer_yellow:hover, .article__pointer_yellow:focus {
+  box-shadow: 0 0 0 20px #e67e22;
+}
+.article__layer {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  will-change: transform;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: .6s ease-in-out;
+  transition: .6s ease-in-out;
+}
+.article__layer_blue {
+  background: #2980b9;
+  box-shadow: 0 0 0 100vw #2980b9, 0 0 0 100vh #2980b9;
+}
+.article__layer_red {
+  background: #e74c3c;
+  box-shadow: 0 0 0 100vw #e74c3c, 0 0 0 100vh #e74c3c;
+}
+.article__layer_yellow {
+  background: #e67e22;
+  box-shadow: 0 0 0 100vw #e67e22, 0 0 0 100vh #e67e22;
+}
+.article__panel {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  will-change: opacity, transform;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+.article__panel:target {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: .2s .4s;
+  transition: .2s .4s;
+}
+.article__panel:target ~ a {
+  z-index: 1;
+}
+.article__panel:target ~ a span {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.article__panel_blue {
+  background: #2980b9;
+}
+.article__panel_red {
+  background: #e74c3c;
+}
+.article__panel_yellow {
+  background: #e67e22;
+}
+.article__body {
+  max-height: 100%;
+  width: 100%;
+  -webkit-box-flex: 0;
+          flex: 0 0 100%;
+  padding: 40px 20px;
+  line-height: 1.6;
+  letter-spacing: .025em;
+  color: rgba(255, 255, 255, 0.75);
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.article__container {
+  max-width: 600px;
+  margin: auto;
+}
+.article__header {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+          align-items: center;
+  margin-bottom: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -60,15 +255,11 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-family: -apple-system, 
-    BlinkMacSystemFont, 
-    "Segoe UI", 
-    Roboto, 
-    Oxygen-Sans, 
-    Ubuntu, 
-    Cantarell, 
-    "Helvetica Neue", 
-    sans-serif;
+  
+  
+   font-family: "Sofia";
+  font-size: 28px;
+  
 }
 
 
@@ -100,7 +291,7 @@ body {
 
 <body translate="no">
 <div class="container">
-<h1>Countdown starts Malanki</h1>
+
 
 <ul>
 <li><span id="days"></span>days</li>
@@ -108,9 +299,8 @@ body {
 <li><span id="minutes"></span>Minutes</li>
 <li><span id="seconds"></span>Seconds</li>
 </ul>
-<h2>We are too busy!!</h2>
-<h3> ----Can we meet over a Webex Video call?----</h3>
-<img src="wink.gif">
+
+
 </div>
 
 
@@ -124,7 +314,7 @@ minute = second * 60,
 hour = minute * 60,
 day = hour * 24;
 
-let countDown = new Date('June 7, 2020 00:00:00').getTime(),
+let countDown = new Date('June 11, 2020 00:00:00').getTime(),
 x = setInterval(function () {
 
   let now = new Date().getTime(),
@@ -145,4 +335,28 @@ x = setInterval(function () {
 //# sourceURL=pen.js
     </script>
 </body>
+
+
+
+</section>
+<section class="article">
+<article class="article__panel article__panel_red" id="article-red">
+<div class="article__body">
+<div class="article__container">
+<header class="article__header">
+
+<a role="button" href="#0" class="back-link">close</a>
+</header>
+
+<h2> This is it! We are too busy for more </h2> 
+ <img src="wink.gif">
+</div>
+</div>
+</article> 
+<a role="button" class="article__pointer article__pointer_red" href="#article-red">
+<span class="article__layer article__layer_red" role="presentation"></span>
+
+</a>
+</section>
+
 </html>
